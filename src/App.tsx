@@ -14,7 +14,7 @@ function App() {
         {id: v1(), title: 'GraphQL', isDone: false},
     ]);
     const removeTask = (id: string) => {
-        tasks = tasks.filter(t => t.id != id);
+        tasks = tasks.filter(t => t.id !== id);
         setTask(tasks);
     };
     let [filter, setFilter] = useState<FilterValuesType>('all');
@@ -27,8 +27,15 @@ function App() {
     const changeFilter = (value: FilterValuesType) => {
         setFilter(value);
     };
-    const addTask = (title:string) => {
+    const addTask = (title: string) => {
         setTask([{id: v1(), title: title, isDone: false}, ...tasks]);
+    };
+    const changeStatus = (id: string, isDone: boolean) => {
+        let task = tasks.find(t => t.id === id);
+        if (task) {
+            task.isDone = isDone;
+            setTask([...tasks]);
+        }
     };
     return (
         <div className="App">
@@ -37,7 +44,9 @@ function App() {
                 title="What to learn"
                 removeTask={removeTask}
                 changeFilter={changeFilter}
-                addTask = {addTask}
+                addTask={addTask}
+                changeTaskStatus={changeStatus}
+                filter={filter}
             />
         </div>
     );
