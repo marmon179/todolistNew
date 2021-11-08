@@ -7,7 +7,7 @@ import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography}
 import {Menu} from '@material-ui/icons';
 
 export type FilterValuesType = 'all' | 'active' | 'completed'
-type TodoListType = {
+export type TodoListType = {
     id: string,
     title: string,
     filter: FilterValuesType
@@ -47,7 +47,6 @@ function App() {
     };
 
     const changeFilter = (value: FilterValuesType, todoListId: string) => {
-        debugger
         let todoList = todoLists.find(tl => tl.id === todoListId);
         if (todoList) {
             todoList.filter = value;
