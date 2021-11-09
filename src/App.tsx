@@ -12,7 +12,7 @@ export type TodoListType = {
     title: string,
     filter: FilterValuesType
 }
-type TasksStateType = {
+export type TasksStateType = {
     [key: string]: TaskType []
 }
 
@@ -33,12 +33,14 @@ function App() {
     ]);
     let [tasks, setTasks] = useState<TasksStateType>({
         [todoListId1]: [
-            {id: v1(), title: 'HTML', isDone: true},
-            {id: v1(), title: 'CSS', isDone: true},
+            { id: "1", title: "CSS", isDone: false },
+            { id: "2", title: "JS", isDone: true },
+            { id: "3", title: "React", isDone: false }
         ],
         [todoListId2]: [
-            {id: v1(), title: 'JS', isDone: false},
-            {id: v1(), title: 'React', isDone: true},
+            { id: "1", title: "bread", isDone: false },
+            { id: "2", title: "milk", isDone: true },
+            { id: "3", title: "tea", isDone: false }
         ]
     });
     const removeTask = (id: string, todoListId: string) => {
